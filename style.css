@@ -1,0 +1,23 @@
+html{
+    background-image: url(deathstar.jpg);
+}
+
+body {
+    background-size: cover;
+    color: gray;
+    margin: auto;
+    width: 50%;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+p{
+    display: inline;
+}
+
+
+
+

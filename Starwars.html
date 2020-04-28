@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Star-Wars</title>
+</head>
+
+<body>
+    <h1>Star-Wars RPG</h1>
+    <h1>Your character</h1>
+    <div class="attackers">
+        <img id="babyYodaImg" alt="baby yoda" src="babyYoda.jpg">
+        <p id="yodaHP"></p></img>
+        <img id="obiWan" src="obiwan.jpg">
+        <p id="obiWanHP"></p></img>
+        <img id="luke" src="luke.jpg">
+        <p id="lukeHP"></p></img>
+    </div>
+    <h1>Enemies available to attack</h1>
+    <div class="enemies">
+        <img id="boba" src="boba.jpg">
+        <p id="bobaHP"></p></img>
+        <img id="vader" src="vader.jpg">
+        <p id="vaderHP"></p></img>
+        <img id="maul" src="maul.jpg">
+        <p id="maulHP"></p></img>
+    </div>
+    <h1>Fight section</h1>
+    <button id="attack">Attack</button>
+    <h1>defender</h1>
+
+
+    <script>
+
+        // This runs the function whenever the document is loaded.
+
+        $(document).ready(function () {
+
+            //these are objects being defined.
+
+            var luke = {
+                health: 100,
+                AP: 150,
+                CAP: 100,
+            };
+
+            var babyYoda = {
+                health: 120,
+                AP: 170,
+                CAP: 200,
+            };
+
+            var obi = {
+                health: 110,
+                AP: 160,
+                CAP: 120,
+            };
+
+            var boba = {
+                health: 100,
+                AP: 150,
+                CAP: 150,
+            };
+
+            var vader = {
+                health: 100,
+                AP: 150,
+                CAP: 150,
+            };
+
+            var maul = {
+                health: 100,
+                AP: 150,
+                CAP: 150,
+            };
+            // This will grab the health property in each corresponding object
+            $("#yodaHP").text(babyYoda.health)
+            $("#obiWanHP").text(obi.health)
+            $("#lukeHP").text(luke.health)
+
+            $("#bobaHP").text(boba.health)
+            $("#vaderHP").text(vader.health)
+            $("#maulHP").text(maul.health)
+
+
+            // These functions will make the other photos disappear when one of them is clicked.
+            // Characters
+            $("#babyYodaImg").on("click", function () {
+                $("#obiWan").hide();
+                $("#luke").hide();
+                $("#obiWanHP").hide();
+                $("#lukeHP").hide();
+                alert("Character selected!");
+            });
+
+            $("#obiWan").on("click", function () {
+                $("#babyYodaImg").hide();
+                $("#luke").hide();
+                $("#yodaHP").hide();
+                $("#lukeHP").hide();
+                alert("Character selected!");
+            });
+
+            $("#luke").on("click", function () {
+                $("#babyYodaImg").hide();
+                $("#obiWan").hide();
+                $("#obiWanHP").hide();
+                $("#yodaHP").hide();
+                alert("Enemy selected!");
+            });
+            //Enemies
+            $("#boba").on("click", function () {
+                $("#maul").hide();
+                $("#vader").hide();
+                $("#maulHP").hide();
+                $("#vaderHP").hide();
+                alert("Enemy selected!");
+            });
+
+            $("#vader").on("click", function () {
+                $("#boba").hide();
+                $("#maul").hide();
+                $("#maulHP").hide();
+                $("#bobaHP").hide();
+                alert("Enemy selected!");
+            });
+
+            $("#maul").on("click", function () {
+                $("#vader").hide();
+                $("#boba").hide();
+                $("#bobaHP").hide();
+                $("#vaderHP").hide();
+                alert("Enemy selected!");
+            });
+
+            // This is the attack button.
+            $("#attack").on("click", function () {
+                alert("Attacking")
+            });
+
+        
+        });
+    </script>
+</body>
+
+</html>
