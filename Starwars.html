@@ -17,7 +17,7 @@
         <img id="babyYodaImg" alt="baby yoda" src="babyYoda.jpg">
         <p id="yodaHP"></p>
         <p id="yodaName"></p></img>
-        
+
         <img id="luke" src="luke.jpg">
         <p id="lukeHP"></p></img>
     </div>
@@ -41,7 +41,7 @@
 
         $(document).ready(function () {
 
-            function reset(){
+            function reset() {
 
                 $("#obiWan").show();
                 $("#luke").show();
@@ -56,53 +56,55 @@
                 $("#vaderHP").show();
                 $("#maul").show();
                 $("#maulHP").show();
+
+                var selectedDamage = []
             }
 
             //these are objects being defined.
             var obj = {
                 characters: [
-                {   
-                    name: "luke",
-                    health: 100,
-                    AP: 150,
-                    CAP: 100,
-                    selected: false,
-                },
-                {   
-                    name: "babyYoda",
-                    health: 120,
-                    AP: 170,
-                    CAP: 200,
-                    selected: false,
-                },
-                {  
-                    name: "obiWan",
-                    health: 110,
-                    AP: 160,
-                    CAP: 120,
-                    selected: false,
-                },
-                {   
-                    name: "boba",
-                    health: 100,
-                    AP: 150,
-                    CAP: 150,
-                    selected: false,
-                },
-                {
-                    name: "vader",
-                    health: 100,
-                    AP: 150,
-                    CAP: 150,
-                    selected: false,
-                },
-                {
-                    name: "maul",
-                    health: 100,
-                    AP: 150,
-                    CAP: 150,
-                    selected: false,
-                }]
+                    {
+                        name: "luke",
+                        health: 100,
+                        AP: 150,
+                        CAP: 100,
+                        selected: false,
+                    },
+                    {
+                        name: "babyYoda",
+                        health: 120,
+                        AP: 170,
+                        CAP: 200,
+                        selected: false,
+                    },
+                    {
+                        name: "obiWan",
+                        health: 110,
+                        AP: 160,
+                        CAP: 120,
+                        selected: false,
+                    },
+                    {
+                        name: "boba",
+                        health: 100,
+                        AP: 150,
+                        CAP: 150,
+                        selected: false,
+                    },
+                    {
+                        name: "vader",
+                        health: 100,
+                        AP: 150,
+                        CAP: 150,
+                        selected: false,
+                    },
+                    {
+                        name: "maul",
+                        health: 100,
+                        AP: 150,
+                        CAP: 150,
+                        selected: false,
+                    }]
             }
 
 
@@ -115,7 +117,7 @@
             var obi = obj.characters[0];
             var yoda = obj.characters[1];
             var luke = obj.characters[2];
-            
+
             var boba = obj.characters[3];
             var vader = obj.characters[4];
             var maul = obj.characters[5];
@@ -138,7 +140,7 @@
 
             // array created to hold the values of the selected character
             var selectedDamage = []
-            
+
 
 
             $("#babyYodaImg").on("click", function () {
@@ -166,7 +168,7 @@
                 obiWan.selected = true;
 
                 if (selected === true) {
-
+                    selectedDamage.push(obiWan.health, obiWan.AP, obiWan.CAP);
                 };
             });
 
@@ -180,7 +182,7 @@
                 luke.selected = true;
 
                 if (selected === true) {
-
+                    selectedDamage.push(luke.health, luke.AP, luke.CAP);
                 };
             });
             //Enemies
@@ -209,7 +211,7 @@
                 vader.selected = true;
 
                 if (selected === true) {
-
+                    selectedDamage.push(vader.health, vader.AP, vader.CAP);
                 };
             });
 
@@ -223,7 +225,7 @@
                 maul.selected = true;
 
                 if (selected === true) {
-
+                    selectedDamage.push(maul.health, maul.AP, maul.CAP);
                 };
             });
 
@@ -231,20 +233,22 @@
             $("#attack").on("click", function () {
                 var attack = true;
                 var damageDone;
+                var counterDamageDone;
 
-                if(attack === true){
+                if (attack === true) {
                     damageDone = selectedDamage[4] - selectedDamage[2];
                 };
-                
-                if(damageDone <= 0 ){
-                    alert("YOU WIN!")
-                    reset()
-                }
+
+                if (damageDone <= 0) {
+                    alert("YOU WIN!");
+                    reset();
+                } else {
+                    alert("YOU LOSE!");
+                    reset();
+                };
 
                 console.log(damageDone);
             });
-
-
         });
     </script>
 </body>
