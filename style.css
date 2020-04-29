@@ -1,9 +1,9 @@
 html{
     background-image: url(deathstar.jpg);
+    background-size: cover;
 }
 
 body {
-    background-size: cover;
     color: gray;
     margin: auto;
     width: 50%;
@@ -12,6 +12,7 @@ body {
 img{
     width: 100px;
     height: 100px;
+    border: solid 2px red;
 }
 
 p{

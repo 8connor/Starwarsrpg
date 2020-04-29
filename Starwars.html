@@ -12,10 +12,12 @@
     <h1>Star-Wars RPG</h1>
     <h1>Your character</h1>
     <div class="attackers">
-        <img id="babyYodaImg" alt="baby yoda" src="babyYoda.jpg">
-        <p id="yodaHP"></p></img>
         <img id="obiWan" src="obiwan.jpg">
         <p id="obiWanHP"></p></img>
+        <img id="babyYodaImg" alt="baby yoda" src="babyYoda.jpg">
+        <p id="yodaHP"></p>
+        <p id="yodaName"></p></img>
+        
         <img id="luke" src="luke.jpg">
         <p id="lukeHP"></p></img>
     </div>
@@ -28,7 +30,7 @@
         <img id="maul" src="maul.jpg">
         <p id="maulHP"></p></img>
     </div>
-    <h1>Fight section</h1>
+    <h1 class="fightZone">Fight section</h1>
     <button id="attack">Attack</button>
     <h1>defender</h1>
 
@@ -39,61 +41,119 @@
 
         $(document).ready(function () {
 
+            function reset(){
+
+                $("#obiWan").show();
+                $("#luke").show();
+                $("#obiWanHP").show();
+                $("#lukeHP").show();
+                $("#yodaHP").show();
+                $("#babyYodaImg").show();
+
+                $("#vader").show();
+                $("#boba").show();
+                $("#bobaHP").show();
+                $("#vaderHP").show();
+                $("#maul").show();
+                $("#maulHP").show();
+            }
+
             //these are objects being defined.
+            var obj = {
+                characters: [
+                {   
+                    name: "luke",
+                    health: 100,
+                    AP: 150,
+                    CAP: 100,
+                    selected: false,
+                },
+                {   
+                    name: "babyYoda",
+                    health: 120,
+                    AP: 170,
+                    CAP: 200,
+                    selected: false,
+                },
+                {  
+                    name: "obiWan",
+                    health: 110,
+                    AP: 160,
+                    CAP: 120,
+                    selected: false,
+                },
+                {   
+                    name: "boba",
+                    health: 100,
+                    AP: 150,
+                    CAP: 150,
+                    selected: false,
+                },
+                {
+                    name: "vader",
+                    health: 100,
+                    AP: 150,
+                    CAP: 150,
+                    selected: false,
+                },
+                {
+                    name: "maul",
+                    health: 100,
+                    AP: 150,
+                    CAP: 150,
+                    selected: false,
+                }]
+            }
 
-            var luke = {
-                health: 100,
-                AP: 150,
-                CAP: 100,
-            };
 
-            var babyYoda = {
-                health: 120,
-                AP: 170,
-                CAP: 200,
-            };
 
-            var obi = {
-                health: 110,
-                AP: 160,
-                CAP: 120,
-            };
 
-            var boba = {
-                health: 100,
-                AP: 150,
-                CAP: 150,
-            };
 
-            var vader = {
-                health: 100,
-                AP: 150,
-                CAP: 150,
-            };
 
-            var maul = {
-                health: 100,
-                AP: 150,
-                CAP: 150,
-            };
-            // This will grab the health property in each corresponding object
-            $("#yodaHP").text(babyYoda.health)
-            $("#obiWanHP").text(obi.health)
-            $("#lukeHP").text(luke.health)
 
-            $("#bobaHP").text(boba.health)
-            $("#vaderHP").text(vader.health)
-            $("#maulHP").text(maul.health)
+            // This will grab the health property in each corresponding property in the array.
+            var obi = obj.characters[0];
+            var yoda = obj.characters[1];
+            var luke = obj.characters[2];
+            
+            var boba = obj.characters[3];
+            var vader = obj.characters[4];
+            var maul = obj.characters[5];
+
+
+            $("#obiWanHP").text(obi.health);
+            $("#yodaHP").text(yoda.health);
+            $("#lukeHP").text(luke.health);
+
+
+            $("#bobaHP").text(boba.health);
+            $("#vaderHP").text(vader.health);
+            $("#maulHP").text(maul.health);
+
 
 
             // These functions will make the other photos disappear when one of them is clicked.
+
             // Characters
+
+            // array created to hold the values of the selected character
+            var selectedDamage = []
+            
+
+
             $("#babyYodaImg").on("click", function () {
                 $("#obiWan").hide();
                 $("#luke").hide();
                 $("#obiWanHP").hide();
                 $("#lukeHP").hide();
                 alert("Character selected!");
+
+                yoda.selected = true;
+
+                if (yoda.selected === true) {
+                    selectedDamage.push(yoda.health, yoda.AP, yoda.CAP)
+                };
+                console.log(selectedDamage)
             });
 
             $("#obiWan").on("click", function () {
@@ -102,6 +162,12 @@
                 $("#yodaHP").hide();
                 $("#lukeHP").hide();
                 alert("Character selected!");
+
+                obiWan.selected = true;
+
+                if (selected === true) {
+
+                };
             });
 
             $("#luke").on("click", function () {
@@ -110,6 +176,12 @@
                 $("#obiWanHP").hide();
                 $("#yodaHP").hide();
                 alert("Enemy selected!");
+
+                luke.selected = true;
+
+                if (selected === true) {
+
+                };
             });
             //Enemies
             $("#boba").on("click", function () {
@@ -118,6 +190,13 @@
                 $("#maulHP").hide();
                 $("#vaderHP").hide();
                 alert("Enemy selected!");
+
+                boba.selected = true;
+
+                if (boba.selected === true) {
+                    selectedDamage.push(boba.health, boba.AP, boba.CAP);
+                };
+                console.log(selectedDamage)
             });
 
             $("#vader").on("click", function () {
@@ -126,6 +205,12 @@
                 $("#maulHP").hide();
                 $("#bobaHP").hide();
                 alert("Enemy selected!");
+
+                vader.selected = true;
+
+                if (selected === true) {
+
+                };
             });
 
             $("#maul").on("click", function () {
@@ -134,14 +219,32 @@
                 $("#bobaHP").hide();
                 $("#vaderHP").hide();
                 alert("Enemy selected!");
+
+                maul.selected = true;
+
+                if (selected === true) {
+
+                };
             });
 
             // This is the attack button.
             $("#attack").on("click", function () {
-                alert("Attacking")
+                var attack = true;
+                var damageDone;
+
+                if(attack === true){
+                    damageDone = selectedDamage[4] - selectedDamage[2];
+                };
+                
+                if(damageDone <= 0 ){
+                    alert("YOU WIN!")
+                    reset()
+                }
+
+                console.log(damageDone);
             });
 
-        
+
         });
     </script>
 </body>
