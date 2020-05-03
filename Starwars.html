@@ -68,7 +68,7 @@
                 $("#maulHP").show();
             }
 
-            //these are objects being defined.
+            //these are objects being defined in an array.
             var obj = {
                 characters: [
                     {
@@ -247,12 +247,11 @@
                 var attacking = function () {
 
                     var attack = true
-
+                    
                     if (attack === true) {
                         damageDone = selectedDamage[3] - selectedDamage[1];
                         // counterDamageDone = selectedDamage[] - selectedDamage [];
-                        selectedDamage[3].push(damageDone)
-                        return damageDone;
+                        
                     };
                 }
                 // if (attack === true) {
@@ -265,7 +264,7 @@
                     reset();
                 } else {
                     attacking();
-
+                    alert("You lose.")
                 };
 
                 attacking();
