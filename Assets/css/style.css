@@ -1,10 +1,10 @@
 html{
-    background-image: url(deathstar.jpg);
+    background-image: url(../images/deathstar.jpg);
     background-size: cover;
 }
 
 body {
-    color: gray;
+    color: red;
     margin: auto;
     width: 50%;
 }
@@ -13,6 +13,7 @@ img{
     width: 100px;
     height: 100px;
     border: solid 2px red;
+    margin: auto;
 }
 
 p{
@@ -20,5 +21,11 @@ p{
 }
 
 
-
-
+#obiWanHP,
+#yodaHP,
+#lukeHP,
+#bobaHP,
+#vaderHP,
+#maulHP {
+    margin-left: -40px;
+}
