@@ -1,5 +1,5 @@
 html{
-    background-image: url(../images/deathstar.jpg);
+    background-image: url("../images/deathstar.jpg");
     background-size: cover;
 }
 
@@ -17,7 +17,7 @@ img{
 }
 
 p{
-    display: inline;
+    display: block;
 }
 
 

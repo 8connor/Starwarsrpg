@@ -12,22 +12,34 @@
     <h1>Star-Wars RPG</h1>
     <h1>Your character</h1>
     <div class="attackers">
-        <img id="obiWan" src="Assets/images/obiwan.jpg">
-        <p id="obiWanHP"></p></img>
-        <img id="babyYodaImg" alt="baby yoda" src="Assets/images/babyYoda.jpg">
-        <p id="yodaHP"></p>
-        <p id="yodaName"></p></img>
-        <img id="luke" src="Assets/images/luke.jpg">
-        <p id="lukeHP"></p></img>
+        <div id="obiWan">
+            <img src="Assets/images/obiwan.jpg">
+            <p id="obiWanHP"></p></img>
+        </div>
+        <div id="yoda">
+            <img alt="baby yoda" src="Assets/images/babyYoda.jpg">
+            <p id="yodaHP"></p>
+        </div>
+        <div id="luke">
+            <img src="Assets/images/luke.jpg">
+            <p id="lukeHP"></p></img>
+        </div>
     </div>
     <h1>Enemies available to attack</h1>
     <div class="enemies">
-        <img id="boba" src="Assets/images/boba.jpg">
-        <p id="bobaHP"></p></img>
-        <img id="vader" src="Assets/images/vader.jpg">
-        <p id="vaderHP"></p></img>
-        <img id="maul" src="Assets/images/maul.jpg">
-        <p id="maulHP"></p></img>
+        <div id="boba">
+            <img src="Assets/images/boba.jpg">
+            <p id="bobaHP"></p></img>
+        </div>
+        <div id="vader">
+            <img src="Assets/images/vader.jpg">
+            <p id="vaderHP"></p></img>
+        </div>
+
+        <div id="maul">
+            <img src="Assets/images/maul.jpg">
+            <p id="maulHP"></p></img>
+        </div>
     </div>
     <h1 class="fightZone">Fight section</h1>
     <button id="attack">Attack</button>
@@ -40,34 +52,6 @@
 
         $(document).ready(function () {
 
-            function reset() {
-
-                $("#obiWan").show();
-                $("#luke").show();
-                $("#obiWanHP").show();
-                $("#lukeHP").show();
-                $("#yodaHP").show();
-                $("#babyYodaImg").show();
-
-                $("#vader").show();
-                $("#boba").show();
-                $("#bobaHP").show();
-                $("#vaderHP").show();
-                $("#maul").show();
-                $("#maulHP").show();
-
-                var selectedDamage = []
-            }
-
-            function resetEnemies() {
-                $("#vader").show();
-                $("#boba").show();
-                $("#bobaHP").show();
-                $("#vaderHP").show();
-                $("#maul").show();
-                $("#maulHP").show();
-            }
-
             //these are objects being defined in an array.
             var obj = {
                 characters: [
@@ -75,21 +59,21 @@
                         name: "luke",
                         health: 100,
                         AP: 20,
-                        CAP: 100,
+                        CAP: 10,
                         selected: false,
                     },
                     {
-                        name: "babyYoda",
+                        name: "yoda",
                         health: 120,
-                        AP: 20,
-                        CAP: 200,
+                        AP: 20, 
+                        CAP: 10,
                         selected: false,
                     },
                     {
                         name: "obiWan",
                         health: 110,
                         AP: 20,
-                        CAP: 120,
+                        CAP: 10,
                         selected: false,
                     },
                     {
@@ -103,23 +87,17 @@
                         name: "vader",
                         health: 100,
                         AP: 20,
-                        CAP: 150,
+                        CAP: 10,
                         selected: false,
                     },
                     {
                         name: "maul",
                         health: 100,
                         AP: 20,
-                        CAP: 150,
+                        CAP: 10,
                         selected: false,
                     }]
             }
-
-
-
-
-
-
 
             // This will grab the health property in each corresponding property in the array.
             var obi = obj.characters[0];
@@ -131,14 +109,14 @@
             var maul = obj.characters[5];
 
 
-            $("#obiWanHP").text(obi.health);
-            $("#yodaHP").text(yoda.health);
-            $("#lukeHP").text(luke.health);
+            $("#obiWanHP").html(obi.health);
+            $("#yodaHP").html(yoda.health);
+            $("#lukeHP").html(luke.health);
 
 
-            $("#bobaHP").text(boba.health);
-            $("#vaderHP").text(vader.health);
-            $("#maulHP").text(maul.health);
+            $("#bobaHP").html(boba.health);
+            $("#vaderHP").html(vader.health);
+            $("#maulHP").html(maul.health);
 
 
 
@@ -147,128 +125,109 @@
             // Characters
 
             // array created to hold the values of the selected character
-            var selectedDamage = []
+            var attackerAP;
+            var attackerHP;
+            var defenderCAP;
+            var defenderHP;
 
-
-
-            $("#babyYodaImg").on("click", function () {
+            $("#yoda").on("click", function () {
                 $("#obiWan").hide();
                 $("#luke").hide();
-                $("#obiWanHP").hide();
-                $("#lukeHP").hide();
-                alert("Character selected!");
 
                 yoda.selected = true;
 
                 if (yoda.selected === true) {
-                    selectedDamage.push(yoda.health, yoda.AP, yoda.CAP)
+                    attackerHP = yoda.health
+                    attackerAP = yoda.AP
                 };
-                console.log(selectedDamage)
             });
 
             $("#obiWan").on("click", function () {
-                $("#babyYodaImg").hide();
+                $("#yoda").hide();
                 $("#luke").hide();
-                $("#yodaHP").hide();
-                $("#lukeHP").hide();
-                alert("Character selected!");
 
-                obiWan.selected = true;
+                obi.selected = true;
 
-                if (obiWan.selected === true) {
-                    selectedDamage.push(obi.health, obi.AP, obi.CAP);
+                if (obi.selected === true) {
+                    attackerHP = obi.health
+                    attackerAP = obi.AP
                 };
             });
-
+            
             $("#luke").on("click", function () {
-                $("#babyYodaImg").hide();
                 $("#obiWan").hide();
-                $("#obiWanHP").hide();
-                $("#yodaHP").hide();
-                alert("Enemy selected!");
+                $("#yoda").hide();
 
                 luke.selected = true;
 
                 if (luke.selected === true) {
-                    selectedDamage.push(luke.health, luke.AP, luke.CAP);
+                    attackerHP = luke.health
+                    attackerAP = luke.AP
                 };
             });
+
+
+
             //Enemies
-            $("#boba").on("click", function () {
-                $("#maul").hide();
-                $("#vader").hide();
-                $("#maulHP").hide();
-                $("#vaderHP").hide();
-                alert("Enemy selected!");
 
-                boba.selected = true;
-
-                if (boba.selected === true) {
-                    selectedDamage.push(boba.health, boba.AP, boba.CAP);
-                };
-
-                console.log(selectedDamage)
-            });
 
             $("#vader").on("click", function () {
                 $("#boba").hide();
                 $("#maul").hide();
-                $("#maulHP").hide();
-                $("#bobaHP").hide();
-                alert("Enemy selected!");
 
                 vader.selected = true;
 
                 if (vader.selected === true) {
-                    selectedDamage.push(vader.health, vader.AP, vader.CAP);
+                    defenderHP = vader.health
+                    defenderCAP = vader.CAP
                 };
             });
-
-            $("#maul").on("click", function () {
+            
+            $("#boba").on("click", function () {
                 $("#vader").hide();
+                $("#maul").hide();
+
+                boba.selected = true;
+
+                if (boba.selected === true) {
+                    defenderHP = boba.health
+                    defenderCAP = boba.CAP
+                };
+            });
+            
+            $("#maul").on("click", function () {
                 $("#boba").hide();
-                $("#bobaHP").hide();
-                $("#vaderHP").hide();
-                alert("Enemy selected!");
+                $("#vader").hide();
 
                 maul.selected = true;
 
                 if (maul.selected === true) {
-                    selectedDamage.push(maul.health, maul.AP, maul.CAP);
+                    defenderHP = maul.health
+                    defenderCAP = maul.CAP
                 };
             });
 
+
             // This is the attack button.
             $("#attack").on("click", function () {
+                
+                defenderHP = defenderHP - attackerAP
+                attackerHP = attackerHP - defenderCAP
 
-                var damageDone;
-                var counterDamageDone;
-
-                var attacking = function () {
-
-                    var attack = true
-                    
-                    if (attack === true) {
-                        damageDone = selectedDamage[3] - selectedDamage[1];
-                        // counterDamageDone = selectedDamage[] - selectedDamage [];
-                        
-                    };
-                }
-                // if (attack === true) {
-                //     damageDone = selectedDamage[4] - selectedDamage[2];
-                //     // counterDamageDone = selectedDamage[] - selectedDamage [];
-
-                // };
-                if (damageDone <= 0) {
-                    alert("YOU WIN!");
-                    reset();
+                if (defenderHP <= 0) {
+                    console.log("you win")
                 } else {
-                    attacking();
-                    alert("You lose.")
+                    console.log("continue attack")
+                    console.log(defenderHP)
+                    console.log(attackerHP)
                 };
 
-                attacking();
-                console.log(damageDone);
+                $("#maulHP").html(defenderHP)
+                $("#bobaHP").html(defenderHP)
+                $("#vaderHP").html(defenderHP)
+                $("#yodaHP").html(attackerHP)
+                $("#obiWanHP").html(attackerHP)
+                $("#lukeHP").html(attackerHP)
             });
         });
     </script>
