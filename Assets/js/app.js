@@ -58,18 +58,13 @@ $(document).ready(function () {
     var vader = obj.characters[4];
     var maul = obj.characters[5];
 
-
     $("#obiWanHP").html(obi.health);
     $("#yodaHP").html(yoda.health);
     $("#lukeHP").html(luke.health);
 
-
     $("#bobaHP").html(boba.health);
     $("#vaderHP").html(vader.health);
     $("#maulHP").html(maul.health);
-
-
- 
 
     // variables created to hold the values of the selected character
     var attackerAP;
@@ -82,11 +77,9 @@ $(document).ready(function () {
         $("#yodaHP").html(yoda.health);
         $("#lukeHP").html(luke.health);
 
-
         $("#bobaHP").html(boba.health);
         $("#vaderHP").html(vader.health);
         $("#maulHP").html(maul.health);
-
 
         $("#obiWan").show();
         $("#luke").show();
@@ -95,7 +88,6 @@ $(document).ready(function () {
         $("#vader").show();
         $("#boba").show();
         $("#maul").show();
-
     }
 
     function continueFight() {
@@ -182,7 +174,6 @@ $(document).ready(function () {
         };
     });
 
-
     // This is the attack button.
     $("#attack").on("click", function () {
         attackerHP = attackerHP - defenderCAP
@@ -195,12 +186,12 @@ $(document).ready(function () {
         $("#obiWanHP").html(attackerHP)
         $("#lukeHP").html(attackerHP)
 
-        if(attackerHP <= 0 && defenderHP <= 0){
+        if (attackerHP <= 0 && defenderHP <= 0) {
             alert("It's a draw!");
             reset();
             return;
         };
-        
+
         if (attackerHP <= 0) {
             alert("you lose!");
             reset();
