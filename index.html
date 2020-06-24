@@ -65,7 +65,7 @@
                     {
                         name: "yoda",
                         health: 120,
-                        AP: 20, 
+                        AP: 20,
                         CAP: 10,
                         selected: false,
                     },
@@ -80,7 +80,7 @@
                         name: "boba",
                         health: 100,
                         AP: 20,
-                        CAP: 150,
+                        CAP: 10,
                         selected: false,
                     },
                     {
@@ -130,6 +130,27 @@
             var defenderCAP;
             var defenderHP;
 
+            function reset() {
+                $("#obiWanHP").html(obi.health);
+                $("#yodaHP").html(yoda.health);
+                $("#lukeHP").html(luke.health);
+
+
+                $("#bobaHP").html(boba.health);
+                $("#vaderHP").html(vader.health);
+                $("#maulHP").html(maul.health);
+
+
+                $("#obiWan").show();
+                $("#luke").show();
+                $("#yoda").show();
+
+                $("#vader").show();
+                $("#boba").show();
+                $("#maul").show();
+
+            }
+
             $("#yoda").on("click", function () {
                 $("#obiWan").hide();
                 $("#luke").hide();
@@ -153,7 +174,7 @@
                     attackerAP = obi.AP
                 };
             });
-            
+
             $("#luke").on("click", function () {
                 $("#obiWan").hide();
                 $("#yoda").hide();
@@ -182,7 +203,7 @@
                     defenderCAP = vader.CAP
                 };
             });
-            
+
             $("#boba").on("click", function () {
                 $("#vader").hide();
                 $("#maul").hide();
@@ -194,7 +215,7 @@
                     defenderCAP = boba.CAP
                 };
             });
-            
+
             $("#maul").on("click", function () {
                 $("#boba").hide();
                 $("#vader").hide();
@@ -210,17 +231,9 @@
 
             // This is the attack button.
             $("#attack").on("click", function () {
-                
+
                 defenderHP = defenderHP - attackerAP
                 attackerHP = attackerHP - defenderCAP
-
-                if (defenderHP <= 0) {
-                    console.log("you win")
-                } else {
-                    console.log("continue attack")
-                    console.log(defenderHP)
-                    console.log(attackerHP)
-                };
 
                 $("#maulHP").html(defenderHP)
                 $("#bobaHP").html(defenderHP)
@@ -228,6 +241,25 @@
                 $("#yodaHP").html(attackerHP)
                 $("#obiWanHP").html(attackerHP)
                 $("#lukeHP").html(attackerHP)
+
+                
+
+                if (defenderHP <= 0) {
+                    alert("you win!")
+                    reset()
+                } else if(attackerHP <= 0){
+                    alert("you lose!")
+                }else {
+                    console.log("continue attack")
+                    console.log(defenderHP)
+                    console.log(attackerHP)
+                };
+
+                
+
+
+
+
             });
         });
     </script>
