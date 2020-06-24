@@ -68,12 +68,9 @@ $(document).ready(function () {
     $("#maulHP").html(maul.health);
 
 
+ 
 
-    // These functions will make the other photos disappear when one of them is clicked.
-
-    // Characters
-
-    // array created to hold the values of the selected character
+    // variables created to hold the values of the selected character
     var attackerAP;
     var attackerHP;
     var defenderCAP;
@@ -146,10 +143,7 @@ $(document).ready(function () {
         };
     });
 
-
-
     //Enemies
-
 
     $("#vader").on("click", function () {
         $("#boba").hide();
@@ -193,15 +187,12 @@ $(document).ready(function () {
         attackerHP = attackerHP - defenderCAP
         defenderHP = defenderHP - attackerAP
 
-
         $("#maulHP").html(defenderHP)
         $("#bobaHP").html(defenderHP)
         $("#vaderHP").html(defenderHP)
         $("#yodaHP").html(attackerHP)
         $("#obiWanHP").html(attackerHP)
         $("#lukeHP").html(attackerHP)
-
-        
 
         if(attackerHP <= 0 && defenderHP <= 0){
             alert("It's a draw!");
@@ -222,8 +213,6 @@ $(document).ready(function () {
             console.log(defenderHP)
             console.log(attackerHP)
         };
-
-
     });
 
 });
