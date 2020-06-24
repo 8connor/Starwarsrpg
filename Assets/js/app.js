@@ -45,7 +45,8 @@ $(document).ready(function () {
                 AP: 20,
                 CAP: 10,
                 selected: false,
-            }]
+            }
+        ]
     }
 
     // This will grab the health property in each corresponding property in the array.
